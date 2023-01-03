@@ -1,5 +1,14 @@
-const lo = require("lodash");
-const items = [1, [2, [3, [4]]]];
-
-const newItems = lo.flattenDeep(items);
-console.log(newItems);
+const express = require("express");
+const app = express();
+app.get("/", (req, res) => {
+  res.status(200).send("Home page");
+});
+app.get("/about", (req, res) => {
+  res.status(200).send("About page");
+});
+app.all("*", (req, res) => {
+  res.status(404).send("<h1>Oops Wrong Page!</h1>");
+});
+app.listen(5000, () => {
+  console.log("server is listening on port 5000");
+});

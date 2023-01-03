@@ -3,12 +3,12 @@ const http = require("http");
 const server = http.createServer((req, res) => {
   //incoming request responds sending back
   if (req.url === "/") {
-    res.end("Welcome to our home page");
+    return res.write("Welcome to our home page");
   }
   if (req.url === "/about") {
-    res.end("here is about page");
+    return res.write("here is about page");
   }
-  res.end(
+  return res.write(
     `<h1>Ooops!</h1>
     <p>Wrong page!</p>
     <a href ="/">back home</a>`

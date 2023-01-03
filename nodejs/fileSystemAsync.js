@@ -1,5 +1,6 @@
 const { readFile, writeFile } = require("fs");
 
+console.log("Before ");
 readFile("content/first.txt", "utf8", (err, result) => {
   if (err) {
     console.log(err);
@@ -21,7 +22,9 @@ readFile("content/first.txt", "utf8", (err, result) => {
         if (err) {
           return null;
         }
+        console.log("in");
       }
     );
   });
 });
+console.log("after");
