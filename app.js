@@ -1,14 +1,14 @@
 const express = require("express");
 const app = express();
+let connection = require("./sqlConnect");
+let { people } = require("./data");
+
 app.get("/", (req, res) => {
-  res.status(200).send("Home page");
-});
-app.get("/about", (req, res) => {
-  res.status(200).send("About page");
-});
-app.all("*", (req, res) => {
-  res.status(404).send("<h1>Oops Wrong Page!</h1>");
+  let sql = `SELECT * FROM products.products`;
+  connection.query(sql, (err, results) => {
+    res.send(results);
+  });
 });
 app.listen(5000, () => {
-  console.log("server is listening on port 5000");
+  console.log("The server is runnin on port 5000.....");
 });
